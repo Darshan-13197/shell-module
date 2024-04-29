@@ -97,7 +97,7 @@ VALIDATE $? 'Start User'
 
 # We need to Load Schema in DB, so Install MySQL Client i.e. mongo.repo
 
-cp /home/centos/roboshop-shell/user.service /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? 'Copying mongodbrepo' 
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
