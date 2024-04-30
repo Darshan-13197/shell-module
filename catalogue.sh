@@ -83,7 +83,8 @@ VALIDATE $? "Installing Dependencied of NodeJS"
 #We need to setup a new service in systemd so systemctl can manage this service
 #So, we are copying it. Use Absolute Path, Because catalogue path exist there.
 
-sudo cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+
+cp /home/centos/shell-module/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
 VALIDATE $? "Copying Catalogue Service File"
 
 systemctl daemon-reload &>> $LOGFILE
@@ -97,7 +98,7 @@ VALIDATE $? "Start Catalogue"
 
 # We need to Load Schema in DB, so Install MySQL Client i.e. mongo.repo
 
-sudo cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+sudo cp /home/centos/shell-module/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "Copying mongodbrepo" 
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
