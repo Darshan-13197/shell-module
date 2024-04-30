@@ -62,21 +62,20 @@ fi
 #Using -p it won't throw any error if /app dir exists
 
 mkdir -p /app &>> $LOGFILE
-VALIDATE $? "Creating /app Directory" 
+VALIDATE $? "Creating app Directory" 
 
 #Download the application code to created app directory.
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
 VALIDATE $? "Downloading the Catalogue Application Code"
 
-cd /app &>> $LOGFILE
-VALIDATE $? "Entering into /app Directory" &>> $LOGFILE
+cd /app 
+#VALIDATE $? "Entering into /app Directory" &>> $LOGFILE
 
 unzip -o /tmp/catalogue.zip &>> $LOGFILE # o --> overwrite
 VALIDATE $? "Unzipping Catalogue"
 
 #Lets download the dependencies.
-
 
 npm install &>> $LOGFILE
 VALIDATE $? "Installing Dependencied of NodeJS" 
