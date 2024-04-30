@@ -52,7 +52,7 @@ VALIDATE $? "Starting MongoDB"
 #Using SED Editor - To update/changes the Lines in the Background.
 # Update listen address from 127.0.0.1 to 0.0.0.0 in /etc/mongod.conf
 
-sed -i 's/127.0.0.0/0.0.0.0/g' /etc/mongod.conf &>> $LOGFILE
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>> $LOGFILE
 VALIDATE $? 'Remote Access to MongoDB' 
 
 systemctl restart mongod &>> $LOGFILE
