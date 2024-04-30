@@ -47,7 +47,7 @@ VALIDATE $? "Enabling MongoDB"
 systemctl start mongod &>> $LOGFILE
 VALIDATE $? "Starting MongoDB" 
 
-vim /etc/mongod.conf &>> $LOGFILE
+#vim /etc/mongod.conf &>> $LOGFILE
 
 #Using SED Editor - To update/changes the Lines in the Background.
 # Update listen address from 127.0.0.1 to 0.0.0.0 in /etc/mongod.conf
