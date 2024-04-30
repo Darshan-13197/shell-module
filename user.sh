@@ -83,7 +83,7 @@ VALIDATE $? 'Installing Dependencied of NodeJS'
 #We need to setup a new service in systemd so systemctl can manage this service
 #So, we are copying it. Use Absolute Path, Because User path exist there.
 
-cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service &>> $LOGFILE
+cp /home/centos/shell-module/user.service /etc/systemd/system/user.service &>> $LOGFILE
 VALIDATE $? 'Copying User Service File' 
 
 systemctl daemon-reload &>> $LOGFILE
@@ -97,7 +97,7 @@ VALIDATE $? 'Start User'
 
 # We need to Load Schema in DB, so Install MySQL Client i.e. mongo.repo
 
-cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+cp /home/centos/shell-module/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? 'Copying mongodbrepo' 
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
