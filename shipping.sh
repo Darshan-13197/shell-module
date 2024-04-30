@@ -32,6 +32,7 @@ fi # fi means reverse of if, indicating condition end
 #Installing Shipping Module
 
 dnf install maven -y &>> $LOGFILE
+VALIDATE $? "Installing MAVEN"
 
 id roboshop #if roboshop user does not exist, then it is failure
 if [ $? -ne 0 ]
@@ -43,7 +44,7 @@ else
 fi
 
 
-mkdir -p /app
+mkdir -p /app &>> $LOGFILE
 VALIDATE $? "creating app directory"
 
 curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>> $LOGFILE
@@ -61,7 +62,7 @@ VALIDATE $? "Installing dependencies"
 mv target/shipping-1.0.jar shipping.jar &>> $LOGFILE
 VALIDATE $? "renaming jar file"
 
-cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>> $LOGFILE
+cp /home/centos/shell-module/shipping.service /etc/systemd/system/shipping.service &>> $LOGFILE
 VALIDATE $? "copying shipping service"
 
 systemctl daemon-reload &>> $LOGFILE
