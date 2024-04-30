@@ -9,6 +9,10 @@ N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
+#In Script, whereever ECHO.ERROR statement comes, the & -> everything will comes and store it into LOGFILE.
+#No need to CALL in Each and every ECHO/ERROR Line
+exec &>$LOGFILE
+
 
 echo "Script Started Executing at $TIMESTAMP" &>> $LOGFILE
 
@@ -19,7 +23,7 @@ VALIDATE() {
         echo -e "$2 .. $R FAILED $N"
         exit 1
     else
-        echo -e "$1 .. $G SUCCESS $N"
+        echo -e "$2 .. $G SUCCESS $N"
     fi 
 }
 
