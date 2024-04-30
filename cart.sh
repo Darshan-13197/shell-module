@@ -51,13 +51,14 @@ else
     echo -e "roboshop user already exist $Y SKIPPING $N"
 fi
 
-mkdir -p /app
+mkdir -p /app &>> $LOGFILE
 VALIDATE $? "creating app directory"
 
 curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip  &>> $LOGFILE
 VALIDATE $? "Downloading cart application"
 
-cd /app 
+cd /app &>> $LOGFILE
+VALIDATE $? "Entering to app Directory"
 
 unzip -o /tmp/cart.zip  &>> $LOGFILE
 VALIDATE $? "unzipping cart"
@@ -66,7 +67,7 @@ npm install  &>> $LOGFILE
 VALIDATE $? "Installing dependencies"
 
 # use absolute, because cart.service exists there
-cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>> $LOGFILE
+cp /home/centos/shell-module/cart.service /etc/systemd/system/cart.service &>> $LOGFILE
 VALIDATE $? "Copying cart service file"
 
 systemctl daemon-reload &>> $LOGFILE
