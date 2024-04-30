@@ -89,21 +89,21 @@ VALIDATE $? 'Copying User Service File'
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? 'User Daemon Reload' 
 
-systemctl enable catalogue &>> $LOGFILE
-VALIDATE $? 'Enable Usere' 
+systemctl enable user &>> $LOGFILE
+VALIDATE $? "Enable Usere"
 
-systemctl start catalogue &>> $LOGFILE
-VALIDATE $? 'Start User' 
+systemctl start user &>> $LOGFILE
+VALIDATE $? "Start User"
 
 # We need to Load Schema in DB, so Install MySQL Client i.e. mongo.repo
 
 cp /home/centos/shell-module/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
-VALIDATE $? 'Copying mongodbrepo' 
+VALIDATE $? "Copying mongodbrepo"
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
-VALIDATE $? 'Installing MongoDB Client' 
+VALIDATE $? "Installing MongoDB Client" 
 
 #Load Schema
 
 mongo --host $MONGODB_HOST </app/schema/catalogue.js &>> $LOGFILE
-VALIDATE $? 'Loading Catalogue Data into MongDB' 
+VALIDATE $? "Loading Catalogue Data into MongDB"

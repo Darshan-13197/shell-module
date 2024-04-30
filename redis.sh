@@ -9,6 +9,7 @@ N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
+
 #In Script, whereever ECHO.ERROR statement comes, the & -> everything will comes and store it into LOGFILE.
 #No need to CALL in Each and every ECHO/ERROR Line
 exec &>$LOGFILE
