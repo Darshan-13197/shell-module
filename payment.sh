@@ -7,7 +7,7 @@ Y="\e[33m"
 N="\e[0m"
 
 #Declaring MONGODB_HOST Variable and calling throght it.
-MONGDB_HOST=mongodb.daws76s.online
+MONGDB_HOST=mongodb.darshanshop.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
@@ -60,7 +60,7 @@ VALIDATE $? "unzipping payment"
 pip3.6 install -r requirements.txt &>> $LOGFILE
 VALIDATE $? "Installing Dependencies"
 
-cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service &>> $LOGFILE
+cp /home/centos/shell-module/payment.service /etc/systemd/system/payment.service &>> $LOGFILE
 VALIDATE $? "Copying payment service"
 
 systemctl daemon-reload &>> $LOGFILE
