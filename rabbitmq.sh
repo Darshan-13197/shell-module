@@ -7,7 +7,7 @@ Y="\e[33m"
 N="\e[0m"
 
 #Declaring MONGODB_HOST Variable and calling throght it.
-MONGDB_HOST=mongodb.daws76s.online
+MONGDB_HOST=mongodb.darshanshop.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
