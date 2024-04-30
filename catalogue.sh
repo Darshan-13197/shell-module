@@ -62,49 +62,49 @@ fi
 #Using -p it won't throw any error if /app dir exists
 
 mkdir -p /app &>> $LOGFILE
-VALIDATE $? 'Creating /app Directory' 
+VALIDATE $? "Creating /app Directory" 
 
 #Download the application code to created app directory.
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
-VALIDATE $? 'Downloading the Catalogue Application Code' 
+VALIDATE $? "Downloading the Catalogue Application Code"
 
 cd /app &>> $LOGFILE
-VALIDATE $? 'Entering into /app Directory' &>> $LOGFILE
+VALIDATE $? "Entering into /app Directory" &>> $LOGFILE
 
 unzip -o /tmp/catalogue.zip &>> $LOGFILE # o --> overwrite
-VALIDATE $? 'Unzipping Catalogue' 
+VALIDATE $? "Unzipping Catalogue"
 
 #Lets download the dependencies.
 
 
 npm install &>> $LOGFILE
-VALIDATE $? 'Installing Dependencied of NodeJS' 
+VALIDATE $? "Installing Dependencied of NodeJS" 
 
 #We need to setup a new service in systemd so systemctl can manage this service
 #So, we are copying it. Use Absolute Path, Because catalogue path exist there.
 
 cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
-VALIDATE $? 'Copying Catalogue Service File' 
+VALIDATE $? "Copying Catalogue Service File"
 
 systemctl daemon-reload &>> $LOGFILE
-VALIDATE $? 'Catalogue Daemon Reload' 
+VALIDATE $? "Catalogue Daemon Reload"
 
 systemctl enable catalogue &>> $LOGFILE
-VALIDATE $? 'Enable Catalogue' 
+VALIDATE $? "Enable Catalogue"
 
 systemctl start catalogue &>> $LOGFILE
-VALIDATE $? 'Start Catalogue' 
+VALIDATE $? "Start Catalogue"
 
 # We need to Load Schema in DB, so Install MySQL Client i.e. mongo.repo
 
 cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
-VALIDATE $? 'Copying mongodbrepo' 
+VALIDATE $? "Copying mongodbrepo" 
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
-VALIDATE $? 'Installing MongoDB Client' 
+VALIDATE $? "Installing MongoDB Client"
 
 #Load Schema
 
 mongo --host $MONGODB_HOST </app/schema/catalogue.js &>> $LOGFILE
-VALIDATE $? 'Loading Catalogue Data into MongoDB' 
+VALIDATE $? "Loading Catalogue Data into MongoDB"
