@@ -8,7 +8,7 @@ Y="\e[33m"
 N="\e[0m"
 
 #Declaring MONGODB_HOST Variable and calling throght it.
-#MONGODB_HOST=mongodb.darshanshop.onine
+MONGODB_HOST=mongodb.darshanshop.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
@@ -105,5 +105,5 @@ VALIDATE $? "Installing MongoDB Client"
 
 #Load Schema
 
-mongo --host 172.31.31.105 </app/schema/user.js &>> $LOGFILE
+mongo --host $MONGODB_HOST </app/schema/user.js &>> $LOGFILE
 VALIDATE $? "Loading User Data into MongDB"
