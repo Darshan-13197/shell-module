@@ -70,7 +70,7 @@ curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zi
 VALIDATE $? 'Downloading the Catalogue Application Code' 
 
 cd /app &>> $LOGFILE
-VALIDATE $? 'Entering into /app Directory' 
+VALIDATE $? 'Entering into /app Directory' &>> $LOGFILE
 
 unzip -o /tmp/catalogue.zip &>> $LOGFILE # o --> overwrite
 VALIDATE $? 'Unzipping Catalogue' 
@@ -98,7 +98,7 @@ VALIDATE $? 'Start Catalogue'
 
 # We need to Load Schema in DB, so Install MySQL Client i.e. mongo.repo
 
-cp /home/centos/roboshop-shell/catalogue.service /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? 'Copying mongodbrepo' 
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
@@ -107,4 +107,4 @@ VALIDATE $? 'Installing MongoDB Client'
 #Load Schema
 
 mongo --host $MONGODB_HOST </app/schema/catalogue.js &>> $LOGFILE
-VALIDATE $? 'Loading Catalogue Data into MongDB' 
+VALIDATE $? 'Loading Catalogue Data into MongoDB' 
