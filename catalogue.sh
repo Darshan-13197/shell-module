@@ -83,8 +83,8 @@ VALIDATE $? "Installing Dependencied of NodeJS"
 #We need to setup a new service in systemd so systemctl can manage this service
 #So, we are copying it. Use Absolute Path, Because catalogue path exist there.
 
-#cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
-#VALIDATE $? "Copying Catalogue Service File"
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+VALIDATE $? "Copying Catalogue Service File"
 
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "Catalogue Daemon Reload"
