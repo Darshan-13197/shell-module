@@ -21,7 +21,9 @@ do
     fi
 
     #The command of creating the EC2 Instances
-    aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type $INSTANCE_TYPE --security-group-ids sg-0dfadc3db09f8f96d --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]"  #--query 'Instances[0].PrivateIpAddress' --output text)
+    IP_ADDRESS=$(aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type $INSTANCE_TYPE --security-group-ids sg-0dfadc3db09f8f96d --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text) #Instances[0] like an array
+
+
 done
 
 
