@@ -4,7 +4,7 @@
 AMI=ami-0b4f379183e5706b9
 SG_ID=sg-0dfadc3db09f8f96d
 ZONE_ID=Z01824442MLFHOL5P289V
-DOMAIN_NAME="darshanshop.online"
+DOMAIN_NAME="darshanshop.online "
 
 # Creating as an Array
 INSTANCES=("mongodb" "mysql" "redis" "rabbitmq" "web" "cart" "user" "catalogue" "shipping" "payment" "dispatch")
