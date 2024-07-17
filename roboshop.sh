@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #replace the AMI, SG_ID, ZONE_ID, Domain
-AMI=ami-0b4f379183e5706b9
+AMI=ami-0b4f379183e5706b9 
 SG_ID=sg-0dfadc3db09f8f96d
 ZONE_ID=Z01824442MLFHOL5P289V
 DOMAIN_NAME="darshanshop.online"
