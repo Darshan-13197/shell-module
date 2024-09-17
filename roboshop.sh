@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #replace the AMI, SG_ID, ZONE_ID, Domain
-AMI=ami-0f3c7d07486cad139
+AMI=ami-0b4f379183e5706b9 
 SG_ID=sg-0dfadc3db09f8f96d
 ZONE_ID=Z01824442MLFHOL5P289V
 DOMAIN_NAME="darshanshop.online"
@@ -21,7 +21,10 @@ do
     fi
 
     #The command of creating the EC2 Instances
-    IP_ADDRESS=$(aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type $INSTANCE_TYPE --security-group-ids sg-0dfadc3db09f8f96d --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text) #Instances[0] like an array
+    #IP_ADDRESS=$(aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type $INSTANCE_TYPE --security-group-ids sg-0dfadc3db09f8f96d --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text) #Instances[0] like an array
+    IP_ADDRESS=$(aws ec2 run-instances --image-id $AMI --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text) #Instances[0] like an array
+
+
 
     echo "$i: $IP_ADDRESS" #will get to know the IP address of the Instances
 
