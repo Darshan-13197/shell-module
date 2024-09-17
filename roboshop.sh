@@ -32,7 +32,7 @@ do
     {
         "Comment": "Creating a record set for cognito endpoint"
         ,"Changes": [{
-        "Action"              : "UPSERT"
+        "Action"              : "UPSERT"  
         ,"ResourceRecordSet"  : {
             "Name"              : "'$i'.'$DOMAIN_NAME'"
             ,"Type"             : "A" 
@@ -47,7 +47,9 @@ do
 
 done
 
-
+# Under Action= "UPSERT", earlier it was Create, now here changed it. 
+#   If Record exists -->Edit, If No Record --> will create
+# Because, It will do, if the RECORD exists, it will EDIT. If there is no Record, it will Create it.
 
 
 
